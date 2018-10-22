@@ -1,3 +1,5 @@
+if (UNIX AND !APPLE)
+
 find_path(LIBUNWIND_INCLUDE_DIR libunwind.h)
 find_library(LIBUNWIND_LIBS NAMES unwind)
 
@@ -18,6 +20,13 @@ else ()
   endif ()
   message(STATUS "libunwind NOT found.")
 endif ()
+
+else (UNIX AND !APPLE)
+
+set(LIBUNWIND_INCLUDE_DIR "")
+set(LIBUNWIND_LIBS "")
+
+endif (UNIX AND !APPLE)
 
 mark_as_advanced(
   LIBUNWIND_LIBS

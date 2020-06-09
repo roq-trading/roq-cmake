@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* `FindRoqApi` is now header-only
+
 ### Added
 
 * `FindRoqLogging`

@@ -4,6 +4,21 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* GetGitRepoVersion
+
+### Removed
+
+* FindBenchmark
+* FindCctz
+* FindDoubleConversion
+* FindFlatbuffers
+* FindGflags
+* FindSparsehash
+* FindSpdlog
+* FindUcl
+
 ## 0.4.0 &ndash; 2020-06-30
 
 ## 0.3.9 &ndash; 2020-06-09

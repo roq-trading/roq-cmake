@@ -1,25 +1,17 @@
-find_path(CROSSGUID_INCLUDE_DIR crossguid/guid.hpp)
-find_library(CROSSGUID_LIBS NAMES crossguid uuid)  # OSX: '-framework CoreFoundation'
+include(FindPackageHandleStandardArgs)
 
-if (CROSSGUID_LIBS AND CROSSGUID_INCLUDE_DIR)
-  set(Crossguid_FOUND TRUE)
-  set(CROSSGUID_LIBS ${CROSSGUID_LIBS})
-else ()
-  set(Crossguid_FOUND FALSE)
-endif ()
+find_path(CROSSGUID_INCLUDE_DIR "crossguid/guid.h")
 
-if (Crossguid_FOUND)
-  if (NOT Crossguid_FIND_QUIETLY)
-    message(STATUS "Found crossguid: ${CROSSGUID_LIBS}")
-  endif ()
-else ()
-  if (Crossguid_FIND_REQUIRED)
-    message(FATAL_ERROR "Could NOT find crossguid.")
-  endif ()
-  message(STATUS "crossguid NOT found.")
-endif ()
+find_library(CROSSGUID_LIBRARY NAMES crossguid)
 
-mark_as_advanced(
-  CROSSGUID_LIBS
-  CROSSGUID_INCLUDE_DIR
+find_package_handle_standard_args(CROSSGUID
+  FOUND_VAR
+    CROSSGUID_FOUND
+  REQUIRED_VARS
+    CROSSGUID_LIBRARY
+    CROSSGUID_INCLUDE_DIR
 )
+
+set(CROSSGUID_INCLUDE_DIRS "${CROSSGUID_INCLUDE_DIR}")
+
+set(CROSSGUID_LIBRARIES "${CROSSGUID_LIBRARY}")

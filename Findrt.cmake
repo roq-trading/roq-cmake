@@ -1,23 +1,12 @@
-find_library(RT_LIB NAMES rt)
+include(FindPackageHandleStandardArgs)
 
-if (RT_LIB)
-  set(rt_FOUND TRUE)
-  set(RT_LIBS ${RT_LIB})
-else ()
-  set(rt_FOUND FALSE)
-endif ()
+find_library(RT_LIBRARY NAMES "rt")
 
-if (rt_FOUND)
-  if (NOT rt_FIND_QUIETLY)
-    message(STATUS "Found rt: ${RT_LIBS}")
-  endif ()
-else ()
-  if (rt_FIND_REQUIRED)
-    message(FATAL_ERROR "Could NOT find rt.")
-  endif ()
-  message(STATUS "rt NOT found.")
-endif ()
-
-mark_as_advanced(
-  RT_LIBS
+find_package_handle_standard_args(RT
+  FOUND_VAR
+    RT_FOUND
+  REQUIRED_VARS
+    RT_LIBRARY
 )
+
+set(RT_LIBRARIES "${RT_LIBRARY}")

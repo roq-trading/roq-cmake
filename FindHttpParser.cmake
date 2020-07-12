@@ -1,25 +1,17 @@
-find_path(HTTP_PARSER_INCLUDE_DIR http_parser.h)
-find_library(HTTP_PARSER_LIBS NAMES http_parser)
+include(FindPackageHandleStandardArgs)
 
-if (HTTP_PARSER_LIBS AND HTTP_PARSER_INCLUDE_DIR)
-  set(HttpParser_FOUND TRUE)
-  set(HTTP_PARSER_LIBS ${HTTP_PARSER_LIBS})
-else ()
-  set(HttpParser_FOUND FALSE)
-endif ()
+find_path(HTTP_PARSER_INCLUDE_DIR "http_parser.h")
 
-if (HttpParser_FOUND)
-  if (NOT HttpParser_FIND_QUIETLY)
-    message(STATUS "Found http-parser: ${HTTP_PARSER_LIBS}")
-  endif ()
-else ()
-  if (HttpParser_FIND_REQUIRED)
-    message(FATAL_ERROR "Could NOT find http-parser.")
-  endif ()
-  message(STATUS "http-parser NOT found.")
-endif ()
+find_library(HTTP_PARSER_LIBRARY NAMES http_parser)
 
-mark_as_advanced(
-  HTTP_PARSER_LIBS
-  HTTP_PARSER_INCLUDE_DIR
+find_package_handle_standard_args(HTTP_PARSER
+  FOUND_VAR
+    HTTP_PARSER_FOUND
+  REQUIRED_VARS
+    HTTP_PARSER_LIBRARY
+    HTTP_PARSER_INCLUDE_DIR
 )
+
+set(HTTP_PARSER_INCLUDE_DIRS "${HTTP_PARSER_INCLUDE_DIR}")
+
+set(HTTP_PARSER_LIBRARIES "${HTTP_PARSER_LIBRARY}")

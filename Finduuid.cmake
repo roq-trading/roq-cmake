@@ -1,23 +1,12 @@
-find_library(UUID_LIB NAMES uuid)
+include(FindPackageHandleStandardArgs)
 
-if (UUID_LIB)
-  set(uuid_FOUND TRUE)
-  set(UUID_LIBS ${UUID_LIB})
-else ()
-  set(uuid_FOUND FALSE)
-endif ()
+find_library(UUID_LIBRARY NAMES "uuid")
 
-if (uuid_FOUND)
-  if (NOT uuid_FIND_QUIETLY)
-    message(STATUS "Found uuid: ${UUID_LIBS}")
-  endif ()
-else ()
-  if (uuid_FIND_REQUIRED)
-    message(FATAL_ERROR "Could NOT find uuid.")
-  endif ()
-  message(STATUS "uuid NOT found.")
-endif ()
-
-mark_as_advanced(
-  UUID_LIBS
+find_package_handle_standard_args(UUID
+  FOUND_VAR
+    UUID_FOUND
+  REQUIRED_VARS
+    UUID_LIBRARY
 )
+
+set(UUID_LIBRARIES "${UUID_LIBRARY}")

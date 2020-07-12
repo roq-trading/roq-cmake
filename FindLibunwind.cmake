@@ -1,34 +1,17 @@
-if (UNIX AND NOT APPLE)
+include(FindPackageHandleStandardArgs)
 
-find_path(LIBUNWIND_INCLUDE_DIR libunwind.h)
-find_library(LIBUNWIND_LIBS NAMES unwind)
+find_path(LIBUNWIND_INCLUDE_DIR "libunwind.h")
 
-if (LIBUNWIND_LIBS AND LIBUNWIND_INCLUDE_DIR)
-  set(Libunwind_FOUND TRUE)
-  set(LIBUNWIND_LIBS ${LIBUNWIND_LIBS})
-else ()
-  set(Libunwind_FOUND FALSE)
-endif ()
+find_library(LIBUNWIND_LIBRARY NAMES unwind)
 
-if (Libunwind_FOUND)
-  if (NOT Libunwind_FIND_QUIETLY)
-    message(STATUS "Found libunwind: ${LIBUNWIND_LIBS}")
-  endif ()
-else ()
-  if (Libunwind_FIND_REQUIRED)
-    message(FATAL_ERROR "Could NOT find libunwind.")
-  endif ()
-  message(STATUS "libunwind NOT found.")
-endif ()
-
-else (UNIX AND NOT APPLE)
-
-set(LIBUNWIND_INCLUDE_DIR "")
-set(LIBUNWIND_LIBS "")
-
-endif (UNIX AND NOT APPLE)
-
-mark_as_advanced(
-  LIBUNWIND_LIBS
-  LIBUNWIND_INCLUDE_DIR
+find_package_handle_standard_args(LIBUNWIND
+  FOUND_VAR
+    LIBUNWIND_FOUND
+  REQUIRED_VARS
+    LIBUNWIND_LIBRARY
+    LIBUNWIND_INCLUDE_DIR
 )
+
+set(LIBUNWIND_INCLUDE_DIRS "${LIBUNWIND_INCLUDE_DIR}")
+
+set(LIBUNWIND_LIBRARIES "${LIBUNWIND_LIBRARY}")

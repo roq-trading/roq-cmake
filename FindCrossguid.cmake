@@ -1,6 +1,6 @@
 include(FindPackageHandleStandardArgs)
 
-find_path(CROSSGUID_INCLUDE_DIR "crossguid/guid.h")
+find_path(CROSSGUID_INCLUDE_DIR "crossguid/guid.hpp")
 
 find_library(CROSSGUID_LIBRARY NAMES crossguid)
 

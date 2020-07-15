@@ -2,7 +2,11 @@ if(NOT DEFINED ENV{GIT_DESCRIBE_TAG})
   find_package(Git REQUIRED)
   execute_process(
     COMMAND ${GIT_EXECUTABLE} describe --tags --always
-    OUTPUT_VARIABLE GIT_REPO_VERSION)
+    OUTPUT_VARIABLE GIT_REPO_VERSION
+    RESULT_VARIABLE result)
+  if(NOT result EQUAL 0)
+    set(GIT_REPO_VERSION "0.0.0")
+  endif()
 else()
   set(GIT_REPO_VERSION $ENV{GIT_DESCRIBE_TAG})
 endif()

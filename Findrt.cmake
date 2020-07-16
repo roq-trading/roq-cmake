@@ -9,4 +9,6 @@ find_package_handle_standard_args(RT
     RT_LIBRARY
 )
 
-set(RT_LIBRARIES "${RT_LIBRARY}")
+# note! drop prefix (assuming a single filename)
+#   was: set(RT_LIBRARIES "${RT_LIBRARY}")
+set(RT_LIBRARIES "rt")

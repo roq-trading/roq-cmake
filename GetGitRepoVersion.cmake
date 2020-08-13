@@ -1,3 +1,9 @@
+if(DEFINED ENV{GIT_DESCRIBE_HASH})
+  set(GIT_DESCRIBE_HASH $ENV{GIT_DESCRIBE_HASH})
+else()
+  set(GIT_DESCRIBE_HASH "unknown")
+endif()
+
 if(NOT DEFINED ENV{GIT_DESCRIBE_TAG})
   find_package(Git REQUIRED)
   execute_process(
@@ -31,3 +37,11 @@ set(ROQ_VERSION "${GIT_REPO_VERSION}")
 set(ROQ_VERSION_MAJOR "${GIT_REPO_VERSION_MAJOR}")
 set(ROQ_VERSION_MINOR "${GIT_REPO_VERSION_MINOR}")
 set(ROQ_VERSION_PATCH "${GIT_REPO_VERSION_PATCH}")
+
+# note! for now using environment variable (should really use cmake_build_type)
+
+if(DEFINED ENV{ROQ_BUILD_TYPE})
+  set(ROQ_BUILD_TYPE $ENV{ROQ_BUILD_TYPE})
+else()
+  set(ROQ_BUILD_TYPE "unknown")
+endif()

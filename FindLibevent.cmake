@@ -5,7 +5,7 @@ find_path(LIBEVENT_INCLUDE_DIR "event2/event.h")
 find_library(LIBEVENT_LIBRARY NAMES event)
 find_library(LIBEVENT_OPENSSL_LIBRARY NAMES event_openssl)
 
-find_package_handle_standard_args(LIBEVENT
+find_package_handle_standard_args(Libevent
   FOUND_VAR
     LIBEVENT_FOUND
   REQUIRED_VARS

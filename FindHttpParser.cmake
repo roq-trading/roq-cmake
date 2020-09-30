@@ -4,7 +4,7 @@ find_path(HTTP_PARSER_INCLUDE_DIR "http_parser.h")
 
 find_library(HTTP_PARSER_LIBRARY NAMES http_parser)
 
-find_package_handle_standard_args(HTTP_PARSER
+find_package_handle_standard_args(HttpParser
   FOUND_VAR
     HTTP_PARSER_FOUND
   REQUIRED_VARS

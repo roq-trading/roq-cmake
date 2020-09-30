@@ -6,7 +6,7 @@ All notable changes will be documented in this file.
 
 ### Changed
 
-* Findrt.cmake now using package name `rt` instead of `RT` (removing warning)
+* Fix `find_package_handle_standard_args` warnings
 
 ## 0.4.4 &ndash; 2020-09-20
 

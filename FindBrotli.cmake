@@ -6,7 +6,7 @@ find_library(BROTLI_COMMON_LIBRARY NAMES brotlicommon)
 find_library(BROTLI_DEC_LIBRARY NAMES brotlidec)
 find_library(BROTLI_ENC_LIBRARY NAMES brotlienc)
 
-find_package_handle_standard_args(BROTLI
+find_package_handle_standard_args(Brotli
   FOUND_VAR
     BROTLI_FOUND
   REQUIRED_VARS

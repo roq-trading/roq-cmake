@@ -4,11 +4,15 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* Findrt.cmake now using package name `rt` instead of `RT` (removing warning)
+
 ## 0.4.4 &ndash; 2020-09-20
 
 ## 0.4.3 &ndash; 2020-09-02
 
-# Changed
+### Changed
 
 * GetGitRepoVersion now defines `GIT_DESCRIBE_HASH` and `ROQ_BUILD_TYPE`
 

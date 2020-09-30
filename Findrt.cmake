@@ -2,7 +2,7 @@ include(FindPackageHandleStandardArgs)
 
 find_library(RT_LIBRARY NAMES "rt")
 
-find_package_handle_standard_args(RT
+find_package_handle_standard_args(rt
   FOUND_VAR
     RT_FOUND
   REQUIRED_VARS

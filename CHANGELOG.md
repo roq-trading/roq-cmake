@@ -4,7 +4,9 @@ All notable changes will be documented in this file.
 
 ## Head
 
-### Remmoved
+## 0.6.0 &ndash; 2021-02-02
+
+### Removed
 
 * Findfs.cmake
 

@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* FindBrotli will now search for static libraries
+
 ## 0.7.0 &ndash; 2021-04-15
 
 ## 0.6.1 &ndash; 2021-02-19

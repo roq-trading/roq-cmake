@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* FindLz4
+
 ### Changed
 
 * FindBrotli will now search for static libraries

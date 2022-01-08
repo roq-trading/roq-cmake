@@ -17,6 +17,12 @@ else()
   set(GIT_REPO_VERSION $ENV{GIT_DESCRIBE_TAG})
 endif()
 
+if(DEFINED ENV{GIT_DESCRIBE_NUMBER})
+  set(GIT_DESCRIBE_NUMBER $ENV{GIT_DESCRIBE_NUMBER})
+else()
+  set(GIT_DESCRIBE_NUMBER "unknown")
+endif()
+
 string(REGEX
   MATCH "^([0-9]+)\\.([0-9]+)\\.([0-9]+)"
   GIT_REPO_VERSION

@@ -6,6 +6,7 @@ All notable changes will be documented in this file.
 
 ### Added
 
+* FindSqlite
 * FindMariadb
 * Findhiredis
 

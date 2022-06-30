@@ -6,6 +6,7 @@ All notable changes will be documented in this file.
 
 ### Added
 
+* FindMariadb
 * Findhiredis
 
 ## 0.8.5 &ndash; 2022-06-06

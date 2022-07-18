@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* Findliburing
+
 ## 0.8.6 &ndash; 2022-07-18
 
 ### Added

@@ -52,6 +52,12 @@ else()
   set(ROQ_BUILD_TYPE "unknown")
 endif()
 
+if(DEFINED ENV{ROQ_BUILD_NUMBER})
+  set(ROQ_BUILD_NUMBER $ENV{ROQ_BUILD_NUMBER})
+else()
+  set(ROQ_BUILD_NUMBER "unknown")
+endif()
+
 if(DEFINED ENV{HOST})
   set(ROQ_HOST $ENV{HOST})
 else()

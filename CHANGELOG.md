@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* Findzlib-ng
+
 ## 0.8.7 &ndash; 2022-08-22
 
 ### Added

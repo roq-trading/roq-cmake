@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* FindCryptoPP
+
 ## 0.8.9 &ndash; 2022-11-14
 
 ## 0.8.8 &ndash; 2022-10-04

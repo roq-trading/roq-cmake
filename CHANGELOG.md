@@ -4,9 +4,9 @@ All notable changes will be documented in this file.
 
 ## Head
 
-### Added
+### Removed
 
-* FindCryptoPP
+* Several recipes are no longer needed (using pkg-config instead)
 
 ## 0.8.9 &ndash; 2022-11-14
 

@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* Brotli 1.1.0 has renamed static libraries (dropped -static from library names)
+
 ## 0.9.6 &ndash; 2023-07-22
 
 ### Changed

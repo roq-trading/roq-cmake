@@ -1,6 +1,16 @@
-# benchmark targets are per sub-project
+# c++
 
-set(ALLOW_DUPLICATE_CUSTOM_TARGETS TRUE)
+enable_language(CXX)
+
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 20)
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+  message("Setting default visibility to hidden")
+  set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+  set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+endif()
 
 # conda
 
@@ -14,18 +24,6 @@ endif()
 
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-# c++
-
-if(NOT DEFINED CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 20)
-endif()
-
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-  message("Setting default visibility to hidden")
-  set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-  set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
-endif()
-
 # prefer static libraries
 
 set(CMAKE_FIND_LIBRARY_SUFFIXES .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
@@ -33,3 +31,7 @@ set(CMAKE_FIND_LIBRARY_SUFFIXES .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
 # filesystem
 
 include(GNUInstallDirs)
+
+# benchmark targets are per sub-project
+
+set(ALLOW_DUPLICATE_CUSTOM_TARGETS TRUE)

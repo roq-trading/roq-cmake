@@ -26,10 +26,6 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 set(CMAKE_FIND_LIBRARY_SUFFIXES .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
 
-# filesystem
-
-include(GNUInstallDirs)
-
 # benchmark targets are per sub-project
 
 set(ALLOW_DUPLICATE_CUSTOM_TARGETS TRUE)

@@ -41,18 +41,24 @@ set(ROQ_VERSION_MAJOR ${GIT_REPO_VERSION_MAJOR})
 set(ROQ_VERSION_MINOR ${GIT_REPO_VERSION_MINOR})
 set(ROQ_VERSION_PATCH ${GIT_REPO_VERSION_PATCH})
 
-# note! for now using environment variable (should really use cmake_build_type)
-
 if(DEFINED ENV{ROQ_BUILD_TYPE})
   set(ROQ_BUILD_TYPE $ENV{ROQ_BUILD_TYPE})
 else()
-  set(ROQ_BUILD_TYPE "unknown")
+  if(DEFINED ENV{CMAKE_BUILD_TYPE})
+    set(ROQ_BUILD_TYPE $ENV{CMAKE_BUILD_TYPE})
+  else()
+    set(ROQ_BUILD_TYPE "unknown")
+  endif()
 endif()
 
 if(DEFINED ENV{ROQ_BUILD_NUMBER})
   set(ROQ_BUILD_NUMBER $ENV{ROQ_BUILD_NUMBER})
 else()
-  set(ROQ_BUILD_NUMBER "unknown")
+  if(DEFINED ENV{PKG_BUILDNUM})  # conda-build
+    set(ROQ_BUILD_NUMBER $ENV{PKG_BUILDNUM})
+  else()
+    set(ROQ_BUILD_NUMBER "unknown")
+  endif()
 endif()
 
 if(DEFINED ENV{HOST})

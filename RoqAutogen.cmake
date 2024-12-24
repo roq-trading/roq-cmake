@@ -57,8 +57,8 @@ function(roq_autogen_hpp)
     endif(SELF_DEPENDS)
     add_custom_command(
       OUTPUT ${target}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${CMAKE_CURRENT_SOURCE_DIR}/${path}
+              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -105,8 +105,8 @@ function(roq_autogen_cpp)
     endif()
     add_custom_command(
       OUTPUT ${target}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${CMAKE_CURRENT_SOURCE_DIR}/${path}
+              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -153,8 +153,8 @@ function(roq_autogen_java)
     endif(SELF_DEPENDS)
     add_custom_command(
       OUTPUT ${target}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${CMAKE_CURRENT_SOURCE_DIR}/${path}
+              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -202,8 +202,8 @@ function(roq_autogen_rst)
     # note! not using clang-format
     add_custom_command(
       OUTPUT ${target}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${CMAKE_CURRENT_SOURCE_DIR}/${path}
+              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
     list(APPEND result "${target}")

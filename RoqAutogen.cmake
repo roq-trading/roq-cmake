@@ -25,7 +25,14 @@ function(roq_autogen_hpp)
   set(SELF_LANGUAGE "cpp")
   set(SELF_FILE_TYPE "hpp")
   set(options DUMMY_OPTION)
-  set(one_value OUTPUT NAMESPACE SCHEMA_DIR SCHEMA_LINK_DIR TEMPLATE_DIR TEMPLATE_TYPE)
+  set(one_value
+      OUTPUT
+      NAMESPACE
+      SCHEMA_DIR
+      SCHEMA_LINK_DIR
+      TEMPLATE_DIR
+      TEMPLATE_TYPE
+      NAMESPACE_2)
   set(multi_value SOURCES DEPENDS)
   cmake_parse_arguments(SELF "${options}" "${one_value}" "${multi_value}" ${ARGN})
   if(NOT DEFINED SELF_SCHEMA_DIR)
@@ -58,8 +65,8 @@ function(roq_autogen_hpp)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path}
-              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 ${SELF_NAMESPACE_2} > ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -74,7 +81,14 @@ function(roq_autogen_cpp)
   set(SELF_LANGUAGE "cpp")
   set(SELF_FILE_TYPE "cpp")
   set(options DUMMY_OPTION)
-  set(one_value OUTPUT NAMESPACE SCHEMA_DIR SCHEMA_LINK_DIR TEMPLATE_DIR TEMPLATE_TYPE)
+  set(one_value
+      OUTPUT
+      NAMESPACE
+      SCHEMA_DIR
+      SCHEMA_LINK_DIR
+      TEMPLATE_DIR
+      TEMPLATE_TYPE
+      NAMESPACE_2)
   set(multi_value SOURCES DEPENDS)
   cmake_parse_arguments(SELF "${options}" "${one_value}" "${multi_value}" ${ARGN})
   if(NOT DEFINED SELF_SCHEMA_DIR)
@@ -107,8 +121,8 @@ function(roq_autogen_cpp)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path}
-              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 ${SELF_NAMESPACE_2} > ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -156,8 +170,8 @@ function(roq_autogen_java)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path}
-              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -206,8 +220,8 @@ function(roq_autogen_rst)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path}
-              --language ${SELF_LANGUAGE} --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
     list(APPEND result "${target}")

@@ -4,6 +4,8 @@ All notable changes will be documented in this file.
 
 ## Head
 
+## 1.0.6 &ndash; 2025-05-16
+
 * Build with experimental C++26 support (#496)
 
 ## 1.0.5 &ndash; 2025-03-26

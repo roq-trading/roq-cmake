@@ -66,7 +66,7 @@ function(roq_autogen_hpp)
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 "${SELF_NAMESPACE_2}" > ${target}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 "${SELF_NAMESPACE_2}" --output_path ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -122,7 +122,7 @@ function(roq_autogen_cpp)
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 "${SELF_NAMESPACE_2}" > ${target}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 "${SELF_NAMESPACE_2}" --output_path ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -171,7 +171,7 @@ function(roq_autogen_java)
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --output_path ${target}
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -221,7 +221,7 @@ function(roq_autogen_rst)
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} > ${target}
+              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --output_path ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
     list(APPEND result "${target}")

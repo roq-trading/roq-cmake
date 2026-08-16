@@ -28,6 +28,7 @@ function(roq_autogen_hpp)
   set(one_value
       OUTPUT
       NAMESPACE
+      META_PATH
       SCHEMA_DIR
       SCHEMA_LINK_DIR
       TEMPLATE_DIR
@@ -35,6 +36,9 @@ function(roq_autogen_hpp)
       NAMESPACE_2)
   set(multi_value SOURCES DEPENDS)
   cmake_parse_arguments(SELF "${options}" "${one_value}" "${multi_value}" ${ARGN})
+  if(NOT DEFINED SELF_META_PATH)
+    set(SELF_META_PATH $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/autogen/meta.json)
+  endif()
   if(NOT DEFINED SELF_SCHEMA_DIR)
     if(DEFINED ENV{CONDA_PREFIX})
       set(SELF_SCHEMA_DIR $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/schema)
@@ -65,8 +69,8 @@ function(roq_autogen_hpp)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 "${SELF_NAMESPACE_2}" --output_path ${target}
+      COMMAND ${ROQ_AUTOGEN} --meta_path "${SELF_META_PATH}" --schema_dir "${SELF_SCHEMA_DIR}" --template_dir "${SELF_TEMPLATE_DIR}" --input_path "${path}" --language "${SELF_LANGUAGE}"
+              --template_type "${SELF_TEMPLATE_TYPE}" --file_type "${SELF_FILE_TYPE}" --namespace_2 "${SELF_NAMESPACE_2}" --output_path "${target}"
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -84,6 +88,7 @@ function(roq_autogen_cpp)
   set(one_value
       OUTPUT
       NAMESPACE
+      META_PATH
       SCHEMA_DIR
       SCHEMA_LINK_DIR
       TEMPLATE_DIR
@@ -91,6 +96,9 @@ function(roq_autogen_cpp)
       NAMESPACE_2)
   set(multi_value SOURCES DEPENDS)
   cmake_parse_arguments(SELF "${options}" "${one_value}" "${multi_value}" ${ARGN})
+  if(NOT DEFINED SELF_META_PATH)
+    set(SELF_META_PATH $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/autogen/meta.json)
+  endif()
   if(NOT DEFINED SELF_SCHEMA_DIR)
     if(DEFINED ENV{CONDA_PREFIX})
       set(SELF_SCHEMA_DIR $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/schema)
@@ -121,8 +129,8 @@ function(roq_autogen_cpp)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --namespace_2 "${SELF_NAMESPACE_2}" --output_path ${target}
+      COMMAND ${ROQ_AUTOGEN} --meta_path "${SELF_META_PATH}" --schema_dir "${SELF_SCHEMA_DIR}" --template_dir "${SELF_TEMPLATE_DIR}" --input_path "${path}" --language "${SELF_LANGUAGE}"
+              --template_type "${SELF_TEMPLATE_TYPE}" --file_type "${SELF_FILE_TYPE}" --namespace_2 "${SELF_NAMESPACE_2}" --output_path "${target}"
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -137,9 +145,12 @@ function(roq_autogen_java)
   set(SELF_LANGUAGE "java")
   set(SELF_FILE_TYPE "java")
   set(options DUMMY_OPTION)
-  set(one_value OUTPUT NAMESPACE SCHEMA_DIR SCHEMA_LINK_DIR TEMPLATE_DIR TEMPLATE_TYPE)
+  set(one_value OUTPUT NAMESPACE META_PATH SCHEMA_DIR SCHEMA_LINK_DIR TEMPLATE_DIR TEMPLATE_TYPE)
   set(multi_value SOURCES DEPENDS)
   cmake_parse_arguments(SELF "${options}" "${one_value}" "${multi_value}" ${ARGN})
+  if(NOT DEFINED SELF_META_PATH)
+    set(SELF_META_PATH $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/autogen/meta.json)
+  endif()
   if(NOT DEFINED SELF_SCHEMA_DIR)
     if(DEFINED ENV{CONDA_PREFIX})
       set(SELF_SCHEMA_DIR $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/schema)
@@ -170,8 +181,8 @@ function(roq_autogen_java)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --output_path ${target}
+      COMMAND ${ROQ_AUTOGEN} --meta_path "${SELF_META_PATH}" --schema_dir "${SELF_SCHEMA_DIR}" --template_dir "${SELF_TEMPLATE_DIR}" --input_path "${path}" --language "${SELF_LANGUAGE}"
+              --template_type "${SELF_TEMPLATE_TYPE}" --file_type "${SELF_FILE_TYPE}" --output_path "${target}"
       COMMAND ${CLANG_FORMAT} -i ${target}
       VERBATIM
       DEPENDS ${depends} ${path})
@@ -186,9 +197,12 @@ function(roq_autogen_rst)
   set(SELF_LANGUAGE "cpp")
   set(SELF_FILE_TYPE "rstinc")
   set(options DUMMY_OPTION)
-  set(one_value OUTPUT NAMESPACE SCHEMA_DIR SCHEMA_LINK_DIR TEMPLATE_DIR TEMPLATE_TYPE)
+  set(one_value OUTPUT NAMESPACE META_PATH SCHEMA_DIR SCHEMA_LINK_DIR TEMPLATE_DIR TEMPLATE_TYPE)
   set(multi_value SOURCES DEPENDS)
   cmake_parse_arguments(SELF "${options}" "${one_value}" "${multi_value}" ${ARGN})
+  if(NOT DEFINED SELF_META_PATH)
+    set(SELF_META_PATH $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/autogen/meta.json)
+  endif()
   if(NOT DEFINED SELF_SCHEMA_DIR)
     if(DEFINED ENV{CONDA_PREFIX})
       set(SELF_SCHEMA_DIR $ENV{CONDA_PREFIX}/${CMAKE_INSTALL_DATADIR}/roq/schema)
@@ -220,8 +234,8 @@ function(roq_autogen_rst)
     add_custom_command(
       OUTPUT ${target}
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      COMMAND ${ROQ_AUTOGEN} --schema_dir ${SELF_SCHEMA_DIR} --template_dir ${SELF_TEMPLATE_DIR} --input_path ${path} --language ${SELF_LANGUAGE}
-              --template_type ${SELF_TEMPLATE_TYPE} --file_type ${SELF_FILE_TYPE} --output_path ${target}
+      COMMAND ${ROQ_AUTOGEN} --meta_path "${SELF_META_PATH}" --schema_dir "${SELF_SCHEMA_DIR}" --template_dir "${SELF_TEMPLATE_DIR}" --input_path "${path}" --language "${SELF_LANGUAGE}"
+              --template_type "${SELF_TEMPLATE_TYPE}" --file_type "${SELF_FILE_TYPE}" --output_path "${target}"
       VERBATIM
       DEPENDS ${depends} ${path})
     list(APPEND result "${target}")
